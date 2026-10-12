@@ -9,7 +9,15 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("\n=== PROTOTYPE: BEFORE ===\n");
-
+         
+        var registry = new EnemyRegistry();
+        
+        registry.Register("StandardOrc", new Orc());
+        registry.Register("EliteElf", new Elf());
+      
+        Enemy Orc = registry.CreateEnemy("StandardOrc");
+        Enemy Elf = registry.CreateEnemy("EliteElf");
+        
         // var sw = Stopwatch.StartNew();
         var army = new List<Enemy>();
         for (int i = 1; i <= 5; i++)
@@ -19,7 +27,7 @@ class Program
             army.Add(orc);
         }
         // Console.WriteLine($"Created 5 orcs in {sw.ElapsedMilliseconds} ms\n");
-
+      
         Enemy original = new Orc();
         original.Name = "Boss Orc";
         Enemy copy = EnemyCopyHelper.CopyEnemy(original);
