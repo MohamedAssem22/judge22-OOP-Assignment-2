@@ -12,7 +12,8 @@ public class Staff
         Validate(id , "id cannot be null or empty");
         Validate(phone , "phone cannot be null or empty");
         CheckNegativeOrZero(salary , "salary cannot be zero or negative");
-        CheckNegativeOrZero(allowance , "allowance cannot be zero or negative");
+        
+        CheckNegativeOrZero(allowance , "allowance cannot be zero or negative" + allowance.ToString());
         if (hireDate == null) throw new ArgumentException("hire date cannot be null");
     }
 
@@ -37,7 +38,8 @@ public class Staff
 
     private void CheckNegativeOrZero(decimal value, string message)
     {
-        if(value <= 0)
+       // Console.Write(value + "\n"); // test value because i got an error 
+        if(value < 0)
             throw new ArgumentException(message);
     }
 }

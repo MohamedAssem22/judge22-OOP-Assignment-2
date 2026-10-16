@@ -14,7 +14,8 @@ public class Loan
     public LibraryItem Item { get; }
     public LoanStatus Status { get; private set; }
     public DateTime ReturnedDate { get; private set; }
-    public DateTime? DueDate => BorrowDate.AddDays(Item.LoanPeriodDays);
+    // public DateTime? DueDate => BorrowDate.AddDays(Item.LoanPeriodDays); this give me error i replace it with next line 
+    public DateTime? DueDate => BorrowDate.AddDays(Item?.LoanPeriodDays ?? 0);
     public decimal LateFee => 0;
 
     internal Loan(string loanId, DateTime borrowDate, Member member, LibraryItem item)
